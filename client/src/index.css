@@ -3,11 +3,21 @@
 @tailwind utilities;
 
 body {
-  background-color: rgb(20, 20, 24);
+  background: rgb(18,50,201);
+background: linear-gradient(90deg,
+ rgb(0, 14, 87) 0%,
+ rgb(9, 27, 97) 20%,
+ rgb(9, 29, 127) 60%,
+ rgb(11, 30, 108) 80%,
+ rgb(10, 32, 84) 100%);
   color: white;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    'Ubuntu',
+      'Cantarell',
+      'Fira Sans',
+      'Droid Sans',
+      'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
