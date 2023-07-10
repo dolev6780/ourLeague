@@ -11,7 +11,7 @@ export default function NavBar() {
   const displayName = user? user.user.nickName : "Guest";
   return (
     <div>
-      <nav className="flex justify-between p-4">
+      <nav className="flex justify-between p-4 font-sans">
         <div className="flex items-center">
           <div
             onClick={() => {

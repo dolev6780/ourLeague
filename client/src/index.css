@@ -5,20 +5,14 @@
 body {
   background: rgb(18,50,201);
 background: linear-gradient(90deg,
- rgb(0, 14, 87) 0%,
- rgb(9, 27, 97) 20%,
- rgb(9, 29, 127) 60%,
- rgb(11, 30, 108) 80%,
- rgb(10, 32, 84) 100%);
+ rgb(6, 26, 128) 0%,
+ rgb(14, 39, 140) 20%,
+ rgb(9, 28, 125) 60%,
+ rgb(5, 29, 128) 80%,
+ rgb(8, 36, 103) 100%);
   color: white;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu',
-      'Cantarell',
-      'Fira Sans',
-      'Droid Sans',
-      'Helvetica Neue',
-    sans-serif;
+  font-family: 'Caprasimo', cursive;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

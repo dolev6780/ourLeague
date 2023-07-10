@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import CustomInput from "../../components/CustomInput";
-export default function Members({handleDisplay}) {
-  
-  const num = 4;
+export default function Members({handleDisplay, num,title,backBtnCase,setMembers}) {
+ 
   const numOfMembers = Array.from(Array(num), (_, index) =>
     index + 1
   )
@@ -15,14 +14,15 @@ export default function Members({handleDisplay}) {
     });
   };
 
-  const handleSubmit = () => {
-    console.log(memberInputs);
+  const handleSubmit = async () => {
+    await setMembers(memberInputs);
+    handleDisplay("Finish");
   };
 
   return (
     <div className="p-10">
       <div>
-        <h1 className="text-2xl my-5 font-bold">Tournament members</h1>
+        <h1 className="text-2xl my-5 font-bold">{title}</h1>
       </div>
       <div className="max-h-[50vh] overflow-auto w-full rounded-lg">
         {numOfMembers.map((member, i) => {
@@ -40,7 +40,7 @@ export default function Members({handleDisplay}) {
       <div className="flex justify-between">
         <button
           onClick={() => {
-            handleDisplay("TournamentDetails");
+            handleDisplay(backBtnCase);
           }}
           className="mt-6 bg-inherit border-2 hover:bg-white hover:bg-opacity-40 text-white font-bold py-2 px-4 rounded-lg ml-2"
         >
