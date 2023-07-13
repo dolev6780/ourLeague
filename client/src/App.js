@@ -6,6 +6,9 @@ import './App.css';
 import SignUp from './pages/SignUp';
 import SignIn from './pages/SignIn';
 import CreateContest from './pages/CreateContest';
+import TournamentStats from './pages/TournamentStats';
+import LeagueStats from './pages/LeagueStats';
+import CompetitionStats from './pages/CompetitionStats';
 function App() {
   const [getPath, setGetPath] = useState("/");
   const [getTitle, setTitle] = useState("");
@@ -19,6 +22,10 @@ function App() {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path={`/${getPath}`} element={<CreateContest getTitle={getTitle} getMembersOption={getMembersOption}/>} />
+          <Route path={"tournamentstats"} element={<TournamentStats />} />
+          <Route path={"leaguestats"} element={<LeagueStats />} />
+          <Route path={"competitionstats"} element={<CompetitionStats />} />
+        
         </Routes>
       </Router>
     </div>

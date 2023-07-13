@@ -6,6 +6,7 @@ export default function Members({handleDisplay, num,title,backBtnCase,setMembers
     index + 1
   )
   const [memberInputs, setMemberInputs] = useState(Array(num).fill(""));
+  const [contestMemberError, setContestMemberError] = useState(Array(num).fill(""));
   const handleInputChange = (index, value) => {
     setMemberInputs(prevInputs => {
       const newInputs = [...prevInputs];
@@ -13,8 +14,21 @@ export default function Members({handleDisplay, num,title,backBtnCase,setMembers
       return newInputs;
     });
   };
-
   const handleSubmit = async () => {
+    for (let index = 0; index < memberInputs.length; index++) {
+      if (memberInputs[index] === "") {
+        setContestMemberError(prevInputs => {
+          const newInputs = [...prevInputs];
+          newInputs[index] = "Please enter member nick name";
+          return newInputs;
+        });
+        setTimeout(() => {
+          setContestMemberError("");
+        }, 5000);
+        return;
+      }
+      setContestMemberError("");
+    }
     await setMembers(memberInputs);
     handleDisplay("Finish");
   };
@@ -29,10 +43,17 @@ export default function Members({handleDisplay, num,title,backBtnCase,setMembers
           return (
             <div key={member}>
               <h1 className="flex mt-4">Member {i + 1}</h1>
-              <CustomInput type="text"
-                setState={value => handleInputChange(i, value)}
+              <CustomInput
+                type="text"
+                setState={(value) => handleInputChange(i, value)}
                 isrequired={true}
-                placeholder="Enter member nick name"/>
+                placeholder="Enter member nick name"
+              />
+              {contestMemberError[i] && (
+                <span className="text-red-500 text-sm font-light flex">
+                  {contestMemberError}
+                </span>
+              )}
             </div>
           );
         })}

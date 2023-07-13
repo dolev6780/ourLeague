@@ -1,7 +1,15 @@
 import React from 'react'
-
+import { useNavigate } from 'react-router-dom';
 export default function FinishDisplay({backBtnCase,title, handleDisplay, members, details}) {
-    return (
+    const navigate = useNavigate();
+
+  const handleData = async () => {
+    localStorage.setItem(`${title}Details`, JSON.stringify(details));
+    localStorage.setItem(`${title}Members`, JSON.stringify(members));
+    navigate('/');
+  }
+  
+  return (
       <div className="p-10">
         <div className="mt-10">
           <h1 className="text-2xl font-bold tracking-wider border-x-[1px] border-t rounded-t-2xl py-1 bg-white bg-opacity-40">
@@ -47,7 +55,7 @@ export default function FinishDisplay({backBtnCase,title, handleDisplay, members
             Back
           </button>
           <button
-            onClick={null}
+            onClick={()=>{handleData()}}
             className="mt-6 bg-inherit border-2 hover:bg-white hover:bg-opacity-40 text-white font-bold py-2 px-4 rounded-lg mr-2"
           >
             create

@@ -33,7 +33,7 @@ export default function Card({ slides}) {
   return (
     <div className="w-full h-64 mt-10 rounded-md border-2 overflow-hidden shadow-md flex flex-col">
       <main
-        className="flex relative justify-between items-center text-2xl flex-grow select-none"
+        className="flex relative justify-between mt-5 text-2xl flex-grow select-none"
         {...handlers}
       >
         <button
@@ -58,17 +58,34 @@ export default function Card({ slides}) {
                   {selectedTab.title}
                 </h1>
                 <p className="text-sm font-medium px-5">
-                  {selectedTab.discription}
+                  {selectedTab.description}
                 </p>
               </div>
             ) : (
-              <div>
-                <h1 className="mb-4 font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-neutral-300 to-blue-400">
+              <div className="relative">
+                <h1 className="mb-2 font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-neutral-300 to-blue-400">
                   {selectedTab.title}
                 </h1>
-                {selectedTab.list.map((l, i) => {
-                  return <div key={i}>{l}</div>;
-                })}
+                <div>
+                  <div className="flex justify-between">
+                    <h1 className="text-sm">
+                      Name: {selectedTab.details.title}
+                    </h1>
+                    <h1 className="text-sm">
+                      Type: {selectedTab.details.type}
+                    </h1>
+                  </div>
+                  <div className="bg-white bg-opacity-40 rounded text-sm mt-4 max-h-[80px] overflow-scroll">
+                    <h1 className='font-semibold'>members</h1>
+                    {selectedTab.members.map((member, i) => {
+                      return (
+                        <div className="" key={i}>
+                          {member}
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
               </div>
             )}
           </motion.div>

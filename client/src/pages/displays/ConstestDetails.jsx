@@ -36,18 +36,18 @@ export default function TournamentDetails({
         <div>
           <h1 className="text-2xl my-10 font-bold">{getTitle} details</h1>
         </div>
-
         <label className="flex font-bold text-md">{getTitle} name</label>
         <CustomInput
           placeholder={`${getTitle} name`}
           setState={setContestName}
           type={"text"}
         />
-{contestNameError && (
+        {contestNameError && (
           <span className="text-red-500 text-sm font-light flex">
             {contestNameError}
           </span>
-        )}        <label className="flex font-bold text-md mt-4">
+        )}{" "}
+        <label className="flex font-bold text-md mt-4">
           Type of {getTitle}
         </label>
         <CustomSelect
@@ -55,7 +55,6 @@ export default function TournamentDetails({
           setState={setTypeOfContest}
           theChoose={typeOfContest}
         />
-
         <label className="flex font-bold text-md mt-4">How many members?</label>
         <CustomSelect
           options={getMembersOption}

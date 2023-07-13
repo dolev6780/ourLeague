@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
 import {
   membersOptionsTournament,
@@ -10,13 +10,41 @@ import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import MilitaryTechIcon from '@mui/icons-material/MilitaryTech';
 import ScoreboardIcon from '@mui/icons-material/Scoreboard';
 export default function HomePage({setGetPath, setTitle, setGetMembersOption}) {
-  const [currentstats, setCurrentstats] = useState([]);
-  const [laststats, setLastStats] = useState([]);
+  
+  const [tournamentDetails, setTournamentDetails] = useState({});
+  const [tournamentMembers, setTournamentMembers] = useState([]);
+  const [leagueDetails, setLeagueDetails] = useState({});
+  const [leagueMembers, setLeagueMembers] = useState([]);
+  const [competitionDetails, setCompetitionDetails] = useState({});
+  const [competitionMembers, setCompetitionMembers] = useState([]);
   const navigate = useNavigate();
+  useEffect(()=>{
+    const getData = () => {
+      const tournamentMembers = localStorage.getItem("TournamentMembers");
+    const tournamentDetails = localStorage.getItem("TournamentDetails");
+    if (tournamentDetails && tournamentMembers) {
+      setTournamentDetails(JSON.parse(tournamentDetails));
+      setTournamentMembers(JSON.parse(tournamentMembers));
+    }
+    const leagueDetails = localStorage.getItem("LeagueDetails");
+    const leagueMembers = localStorage.getItem("LeagueMembers");
+    if (leagueDetails && leagueMembers) {
+      setLeagueDetails(JSON.parse(leagueDetails));
+      setLeagueMembers(JSON.parse(leagueMembers));
+    }
+    const competitionDetails = localStorage.getItem("CompetitionDetails");
+    const competitionMembers = localStorage.getItem("CompetitionMembers");
+    if (competitionDetails && competitionMembers) {
+      setCompetitionDetails(JSON.parse(competitionDetails));
+      setCompetitionMembers(JSON.parse(competitionMembers));
+    }
+  }
+  return getData();
+  }, [])
   const TournamentSlides = [
     {
       title: "Create New Tournament",
-      discription:
+      description:
         "Customize your own tournament and play with your friends for the title.",
       icon:<EmojiEventsIcon fontSize='large'/>,
       click: async function () {
@@ -28,17 +56,22 @@ export default function HomePage({setGetPath, setTitle, setGetMembersOption}) {
     },
     {
       title: "Tournament stats",
-      list: currentstats.length > 0 ? currentstats : ["No stats yet"],
+      details: Object.keys(tournamentDetails).length > 0 ? tournamentDetails : ["No stats yet"],
+      members:tournamentMembers.length > 0 ? tournamentMembers : [""],
+      click: async function () {
+        navigate("/tournamentstats");
+      }
     },
     {
       title: "Last Tournament",
-      list: laststats.length > 0 ? laststats : ["No Tournaments yet"],
+      details: Object.keys(tournamentDetails).length > 0 ? tournamentDetails : ["No stats yet"],
+      members:tournamentMembers.length > 0 ? tournamentMembers : [""],
     },
   ];
   const LeagueSlides = [
     {
       title: "Create New League",
-      discription: "Customize your own league and add your friends and let's see who will be the champion.",
+      description: "Customize your own league and add your friends and let's see who will be the champion.",
       icon:<MilitaryTechIcon fontSize='large'/>,
       click: async function(){
         await setGetPath('createnewleague');
@@ -49,18 +82,23 @@ export default function HomePage({setGetPath, setTitle, setGetMembersOption}) {
     },
     {
       title: "League stats",
-      list: currentstats.length > 0 ? currentstats : ["No stats yet"],
+      details: Object.keys(leagueDetails).length > 0 ? leagueDetails : ["No stats yet"],
+      members:leagueMembers.length > 0 ? leagueMembers : [""],
+      click: async function () {
+        navigate("/leaguestats");
+      }
      
     },
     {
       title: "Last League",
-      list: laststats.length > 0 ? laststats : ["No Leagues yet"],
+      details: Object.keys(leagueDetails).length > 0 ? leagueDetails : ["No stats yet"],
+      members:leagueMembers.length > 0 ? leagueMembers : [""],
     },
   ];
   const CompetitionSlides = [
     {
       title: "Create New Competition",
-      discription:
+      description:
         "Customize your own competition between friend and let's see who will have the best records.",
       icon: <ScoreboardIcon fontSize="large" />,
       click: async function () {
@@ -72,11 +110,16 @@ export default function HomePage({setGetPath, setTitle, setGetMembersOption}) {
     },
     {
       title: "Competition stats",
-      list: currentstats.length > 0 ? currentstats : ["No stats yet"],
+      details: Object.keys(competitionDetails).length > 0 ? competitionDetails : ["No stats yet"],
+      members:competitionMembers.length > 0 ? competitionMembers : [""],
+      click: async function () {
+        navigate("/competitionstats");
+      }
     },
     {
       title: "Last Competition",
-      list: laststats.length > 0 ? laststats : ["No Competitions yet"],
+      details: Object.keys(competitionDetails).length > 0 ? competitionDetails : ["No stats yet"],
+      members:competitionMembers.length > 0 ? competitionMembers : [""],
     },
   ];
   return (
