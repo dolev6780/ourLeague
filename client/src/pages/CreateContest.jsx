@@ -46,8 +46,8 @@ export default function CreateContest({ getTitle, getMembersOption }) {
   };
 
   return (
-    <div className="w-full mt-10">
-      <h1 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-100">
+    <div className="w-full mt-10 md:w-[800px] md:m-auto md:mt-32 md:p-10">
+      <h1 className="text-4xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-100">
         New {getTitle}
       </h1>
       {showDisplay(whichDisplay)}

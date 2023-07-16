@@ -21,7 +21,7 @@ export default function CustomSelect({options,setState,theChoose}) {
   return (
     <div className="relative mt-1">
       <button
-        className="dropdown-button text-left bg-white bg-opacity-40 w-full p-4 rounded-lg"
+        className="dropdown-button text-left bg-white bg-opacity-40 w-full p-4 md:py-6 md:text-xl rounded-lg"
         onClick={toggleDropdown}
       >
         {theChoose}
@@ -38,7 +38,7 @@ export default function CustomSelect({options,setState,theChoose}) {
         )}
       </button>
       {isOpen && (
-        <div className="dropdown-content max-h-40 overflow-scroll overflow-x-auto bg-white bg-opacity-30 w-full mt-1 rounded-lg">
+        <div className="dropdown-content max-h-40 overflow-y-scroll no-scrollbar bg-white bg-opacity-30 w-full mt-1 rounded-lg cursor-pointer">
           {options.map((option) => (
             <p
               onClick={() => {

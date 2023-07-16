@@ -50,13 +50,13 @@ export default function FinishDisplay({backBtnCase,title, handleDisplay, members
             onClick={() => {
               handleDisplay(backBtnCase);
             }}
-            className="mt-6 bg-inherit border-2 hover:bg-white hover:bg-opacity-40 text-white font-bold py-2 px-4 rounded-lg ml-2"
+            className="mt-6 bg-inherit border-2 hover:bg-white hover:bg-opacity-40 text-white font-bold py-2 px-4 md:py-4 md:px-6 rounded-lg ml-2"
           >
             Back
           </button>
           <button
             onClick={()=>{handleData()}}
-            className="mt-6 bg-inherit border-2 hover:bg-white hover:bg-opacity-40 text-white font-bold py-2 px-4 rounded-lg mr-2"
+            className="mt-6 bg-inherit border-2 hover:bg-white hover:bg-opacity-40 text-white font-bold py-2 px-4 md:py-4 md:px-6 rounded-lg mr-2"
           >
             create
           </button>

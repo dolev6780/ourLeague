@@ -9,6 +9,7 @@ import Card from '../components/Card';
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import MilitaryTechIcon from '@mui/icons-material/MilitaryTech';
 import ScoreboardIcon from '@mui/icons-material/Scoreboard';
+import BouncingBall from '../components/BouncingBall';
 export default function HomePage({setGetPath, setTitle, setGetMembersOption}) {
   
   const [tournamentDetails, setTournamentDetails] = useState({});
@@ -123,12 +124,16 @@ export default function HomePage({setGetPath, setTitle, setGetMembersOption}) {
     },
   ];
   return (
-    <div className='p-10 relative'>
-      <div>
+    <div className='p-10 relative xl:h-[90vh]'>
+      <h1 className='text-3xl md:text-4xl lg:text-5xl xl:text-8xl relative md:top-4 font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-300 via-blue-500 to-blue-100'>OUR LEAGUE</h1>
+      <div className='xl:flex xl:gap-20 sm:justify-center xl:h-full sm:items-center
+        sm:grid sm:grid-flow-row 
+      '>
       <Card slides={TournamentSlides}/>
       <Card slides={LeagueSlides}/>
       <Card slides={CompetitionSlides}/>
       </div>
+      {/* <BouncingBall/> */}
       </div>
   );
 }

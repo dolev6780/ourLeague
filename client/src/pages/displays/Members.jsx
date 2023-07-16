@@ -34,11 +34,11 @@ export default function Members({handleDisplay, num,title,backBtnCase,setMembers
   };
 
   return (
-    <div className="p-10">
+    <div className="p-10 mt-10">
       <div>
-        <h1 className="text-2xl my-5 font-bold">{title}</h1>
+        <h1 className="text-2xl md:text-4xl my-5 font-bold">{title}</h1>
       </div>
-      <div className="max-h-[50vh] overflow-auto w-full rounded-lg">
+      <div className="max-h-[50vh] overflow-y-scroll no-scrollbar w-full rounded-lg">
         {numOfMembers.map((member, i) => {
           return (
             <div key={member}>
@@ -50,7 +50,7 @@ export default function Members({handleDisplay, num,title,backBtnCase,setMembers
                 placeholder="Enter member nick name"
               />
               {contestMemberError[i] && (
-                <span className="text-red-500 text-sm font-light flex">
+                <span className="text-red-500 text-sm md:text-lg font-light flex">
                   {contestMemberError}
                 </span>
               )}
@@ -63,13 +63,13 @@ export default function Members({handleDisplay, num,title,backBtnCase,setMembers
           onClick={() => {
             handleDisplay(backBtnCase);
           }}
-          className="mt-6 bg-inherit border-2 hover:bg-white hover:bg-opacity-40 text-white font-bold py-2 px-4 rounded-lg ml-2"
+          className="mt-6 bg-inherit border-2 hover:bg-white hover:bg-opacity-40 text-white font-bold py-2 px-4 md:py-4 md:px-6 rounded-lg ml-2"
         >
           Back
         </button>
         <button
           onClick={()=>{handleSubmit()}}
-          className="mt-6 bg-inherit border-2 hover:bg-white hover:bg-opacity-40 text-white font-bold py-2 px-4 rounded-lg mr-2"
+          className="mt-6 bg-inherit border-2 hover:bg-white hover:bg-opacity-40 text-white font-bold py-2 px-4 md:py-4 md:px-6 rounded-lg mr-2"
         >
           Next
         </button>
